@@ -1,11 +1,9 @@
 from django.shortcuts import render
+from .models import Item
 
-# Create your views here.
-def show_main(request):
+def item_list(request):
+    items = Item.objects.all()  # Mengambil semua item dari database
     context = {
-        'npm' : '2306123456',
-        'name': 'Pak Bepe',
-        'class': 'PBP E'
+        'items': items,
     }
-
-    return render(request, "main.html", context)
+    return render(request, 'main/item_list.html', context)

@@ -1,12 +1,20 @@
 from django.db import models
 
 # Create your models here.
-class SyreEntry(models.Model):
-    mood = models.CharField(max_length=255) #product
-    time = models.DateField(auto_now_add=True) #price
-    feelings = models.TextField() #desc
-    mood_intensity = models.IntegerField()
+from django.db import models
 
-    @property
-    def is_mood_strong(self):
-        return self.mood_intensity > 5
+class Item(models.Model):
+    # Atribut 
+    name = models.CharField(max_length=255)  # Nama
+    price = models.IntegerField()            # Harga 
+    description = models.TextField()         # Deskripsi
+
+    # Atribut tambahan 
+    stock = models.IntegerField(default=0)  # Stok
+    category = models.CharField(max_length=100, null=True, blank=True)  # Kategori 
+    image = models.ImageField(upload_to='images/', null=True, blank=True)  # Gambar item
+    
+    def __str__(self):
+        return self.name
+
+    
