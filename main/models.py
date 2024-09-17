@@ -1,20 +1,18 @@
 from django.db import models
+import uuid
 
 # Create your models here.
-from django.db import models
-
-class Item(models.Model):
-    # Atribut 
-    name = models.CharField(max_length=255)  # Nama
-    price = models.IntegerField()            # Harga 
-    description = models.TextField()         # Deskripsi
-
-    # Atribut tambahan 
-    stock = models.IntegerField(default=0)  # Stok
-    category = models.CharField(max_length=100, null=True, blank=True)  # Kategori 
-    image = models.ImageField(upload_to='images/', null=True, blank=True)  # Gambar item
     
-    def __str__(self):
-        return self.name
+class ItemEntry(models.Model):
+    # Atribut
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)  # ID unik menggunakan UUID
+    name = models.CharField(max_length=255)  # Nama item 
+    category = models.CharField(max_length=100, null=True, blank=True)  # Kategori
+    size = models.CharField(max_length=50, null=True, blank=True) 
+    color = models.CharField(max_length=50, null=True, blank=True)
+    price = models.IntegerField(null=True, blank=True)  # Harga
+    # image = models.ImageField(upload_to='images/', null=True, blank=True)  # Gambar item
+    
+   
 
     

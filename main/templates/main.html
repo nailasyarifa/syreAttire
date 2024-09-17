@@ -1,8 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends 'base.html' %}
+{% block meta %}
     <title>SyreAttire</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,14 +9,14 @@
             font-family: Arial, sans-serif;
             line-height: 1.2;
             margin: 0;
-            background-color: #f0f0f0; 
+            background-color: #cab7a8f0; 
             display: flex;
             flex-direction: column; 
             min-height: 100vh;
-        }x
+        }
 
         header {
-            background-color: #cab7a8;
+            background-color: #fff;
             color: #fff;
             padding: 10px 20px; 
             text-align: center;
@@ -31,8 +28,8 @@
         }
 
         footer {
-            background-color: #cab7a8;
-            color: #fff;
+            background-color: #fff;
+            color: #cab7a8;
             padding: 10px 20px;
             text-align: center;
             margin-top: auto; 
@@ -47,7 +44,7 @@
             max-width: 1400px; 
             min-height: 750px; 
             box-sizing: border-box;
-            color: #fff; 
+            color: #cab7a8; 
             display: flex;
             flex-direction: column;
             justify-content: center; 
@@ -59,6 +56,7 @@
 
         h1 { 
             font-family: 'Antic Didone', serif;
+            justify-content: center;
             font-size: 8em; 
             margin: 0;
         }
@@ -67,34 +65,65 @@
             font-family: 'Comfortaa', cursive;
             font-size: 1.5em; 
             margin: 10px 0 0; 
-            color: #fff; 
+            color: #000; 
         }
 
         h3 {
             font-family: 'Comfortaa', cursive;
             font-size: 1.2em; 
             margin: 5px 0 0; 
-            color: #fff;
+            color: #000;
         }
     </style>
-</head>
-<body>
+{% endblock meta %}
+{% block content %}
 
     <!-- Header -->
     <header>
     </header>
 
-    <!-- Konten Utama -->
-    <div class="container">
-        <h1>SyreAttire</h1>
-        <h2>Naila Syarifa Yosarvi</h2>
-        <h3>PBP - B</h3>
-    </div>
+    <h1>SyreAttire</h1>
+
+    <h2>Naila Syarifa Yosarvi</h2>
+   
+    <h3>PBP - B</h3>
+
+    {% if not items %}
+    <p>Belum ada data items pada SyreAttire.</p>
+    {% else %}
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Size</th>
+        <th>Color</th>
+        <th>Price</th>
+    </tr>
+
+    {% for item_entry in items %}
+    <tr>
+        <td>{{ item_entry.name }}</td>
+        <td>{{ item_entry.category }}</td>
+        <td>{{ item_entry.size }}</td>
+        <td>{{ item_entry.color }}</td>
+        <td>{{ item_entry.price }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+
+
+    <br />
+
+    <a href="{% url 'main:create_items_entry' %}">
+    <button>Add New Item</button>
+    </a>
+    
+
 
     <!-- Footer -->
     <footer>
         <p>&copy; 2024 SyreAttire. All rights reserved.</p>
     </footer>
 
-</body>
-</html>
+{% endblock content %}
