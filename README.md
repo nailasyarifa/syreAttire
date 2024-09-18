@@ -46,4 +46,35 @@ Django menyediakan fitur yang cukup cocok untuk pemula, dengan fitur dokumentasi
 ## 5. Mengapa model pada Django disebut sebagai ORM?
 ORM merupakan teknik pemrograman yang memungkinkan user untuk berinteraksi dengan basis data relasional dalam bahasa pemrograman berorientasi objek,python. ORM sebagai perantara antara model objek dan tabel basis data, sehingga tidak perlu menuris query SQL untuk operasi basis data. 
 
+# Tugas 3: I Implementasi Form dan Data Delivery pada Django
+# PBP B
+
+## 1. Jelaskan mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform?
+Data delivery merupakan komponen penting dalam implementasi platform karena memastikan bahwa data dapat ditransfer, diproses, dan digunakan secara efektif antara berbagai komponen sistem dan antara sistem dengan user. Ini mendukung pertukaran informasi yang efisien, interaksi user yang responsif, dan keamanan data. Data delivery membuat platform memberikan fungsionalitas dan pengalaman pengguna yang kaya dan dinamis.
+
+## 2. Menurutmu, mana yang lebih baik antara XML dan JSON? Mengapa JSON lebih populer dibandingkan XML?
+Karena lebih sederhana, JSON lebih baik dibandingkan XML. JSON menggunakan format key-value yang lebih efisien dan memiliki ukuran data yang lebih kecil, sehingga mempercepat transfer data. Selain itu, JSON didukung secara bawaan oleh banyak bahasa pemrograman, terutama JavaScript, sehingga lebih mudah diintegrasikan dalam pengembangan web dan aplikasi modern.Sementara XML lebih kompleks dan mendukung validasi data yang ketat, JSON lebih populer karena kemudahan dan efisiensinya, terutama dalam aplikasi yang memerlukan pertukaran data cepat seperti API dan layanan web.
+
+## 3. Jelaskan fungsi dari method is_valid() pada form Django dan mengapa kita membutuhkan method tersebut?
+Method is_valid() akan memeriksa data yang dikirimkan ke form dan memastikan bahwa data tersebut memenuhi semua aturan validasi yang telah didefinisikan dalam form. Ini memastikan keamanan, integritas data, dan memberikan pengalaman pengguna yang lebih baik dengan menangkap dan menangani kesalahan input.
+
+## 4. Mengapa kita membutuhkan csrf_token saat membuat form di Django? Apa yang dapat terjadi jika kita tidak menambahkan csrf_token pada form Django? Bagaimana hal tersebut dapat dimanfaatkan oleh penyerang?
+csrf_token adalah komponen penting dalam keamanan aplikasi web Django. Ini untuk melindungi aplikasi dari serangan CSRF (Cross-Site Request Forgery), sebuah jenis serangan di mana penyerang mencoba mengeksploitasi kepercayaan yang dimiliki oleh situs web pada browser user. Jika tidak menambahkan csrf_token pada form Django, aplikasi menjadi rentan terhadap serangan CSRF. Dalam serangan ini, penyerang dapat memaksa pengguna yang sedang terautentikasi di aplikasi web untuk melakukan tindakan yang tidak diinginkan. Misalnya pada e-commerce, serangan CSRF dapat digunakan untuk memaksa user melakukan pembelian tanpa sepengetahuan mereka. 
+
+## 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+- Buat kerangka views terlebih dahulu dengan membuat folder templates pada root membuat berkas base.html. Berkas base.html akan digunakan sebagai kerangkan umum untuk halaman web lainnya. Kemudian  membuat berkas baru pada folder main dengan nama forms.py dan menambah beberapa code dan import.
+- Kemudian  membuat views.py yang ada di folder main dan menambahkan beberapa import dan saya juga membuat fungsi baru dalam file view.py dan mengubah fungsi show_main yang ada di views.py
+- Kemudian saya membuka urls.py yang ada di folder main dan import fungsi create_items_entry dan saya menambahkan path url ke dalam urlpattern pada urls.py di main untuk mengakses fungsi yang diimport tadi.
+- Membuat create_items_entry.html
+- Kemudian pada berkas main.html, menambahkan beberapa kode dalam {% block content %}.
+- Menambahkan beberapa fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID.
+- Selanjutnya membuat routing URL untuk masing-masing views yang telah ditambahkan sebelumnya.
+- Melakukan data view lewat postman
+![Flow Diagram](json.jpeg)
+
+
+
+
+
+
 
