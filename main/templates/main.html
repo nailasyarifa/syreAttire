@@ -118,9 +118,11 @@
     <a href="{% url 'main:create_items_entry' %}">
     <button>Add New Item</button>
     </a>
+    <a href="{% url 'main:logout' %}">
+        <button>Logout</button>
+    </a>
+    <h5>Sesi terakhir login: {{ last_login }}</h5>
     
-
-
     <!-- Footer -->
     <footer>
         <p>&copy; 2024 SyreAttire. All rights reserved.</p>
