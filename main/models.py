@@ -1,10 +1,12 @@
 from django.db import models
 import uuid
+from django.contrib.auth.models import User
 
 # Create your models here.
     
 class ItemEntry(models.Model):
     # Atribut
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)  # ID unik menggunakan UUID
     name = models.CharField(max_length=255)  # Nama item 
     category = models.CharField(max_length=100, null=True, blank=True)  # Kategori

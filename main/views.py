@@ -16,10 +16,10 @@ from django.urls import reverse
 @login_required(login_url='/login')
 
 def show_main(request):
-    items = ItemEntry.objects.all()  # Mengambil semua item dari database
+    items = ItemEntry.objects.filter(user=request.user)  # Mengambil semua item dari database
 
     context = {
-        'name': 'Your Name Here',  # Nama pengguna atau informasi lain
+        'name': request.user.username,  #tugas 4
         'items': items,  # Daftar semua item pakaian
         'last_login': request.COOKIES['last_login'],
         
@@ -29,8 +29,11 @@ def show_main(request):
 
 def create_items_entry (request):
     form = ItemEntryForm(request.POST or None)
+
     if form.is_valid() and request.method == "POST":
-        form.save()
+        item_entry = form.save(commit=False)
+        item_entry.user = request.user
+        item_entry.save()
         return redirect('main:show_main')
 
     context = {'form': form}

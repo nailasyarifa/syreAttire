@@ -72,6 +72,36 @@ csrf_token adalah komponen penting dalam keamanan aplikasi web Django. Ini untuk
 - Melakukan data view lewat postman
 ![Flow Diagram](json.jpeg)
 
+# Tugas 4: Implementasi Autentikasi, Session, dan Cookies pada Django
+
+## 1. Apa perbedaan antara HttpResponseRedirect() dan redirect()? 
+- HttpResponseRedirect() adalah respons HTTP yang mengarahkan pengguna ke URL baru.
+- redirect() adalah shortcut yang disediakan Django untuk melakukan redirect. Ini lebih fleksibel karena bisa menerima berbagai jenis argumen, termasuk URL, nama view, atau instance model.
+
+## 2. Jelaskan cara kerja penghubungan model Product dengan User!
+- 
+
+
+## 3. Apa perbedaan antara authentication dan authorization, apakah yang dilakukan saat pengguna login? Jelaskan bagaimana Django mengimplementasikan kedua konsep tersebut.
+Authentication adalah proses memverifikasi identitas user, sistem teknologi menggunakan beberapa bentuk authentication untuk mengamankan akses ke aplikasi atau datanya. Misalnya, ketika mengakses situs atau layanan online, biasanya kita harus memasukkan nama pengguna dan kata sandi. Kemudian, di balik layar, ia membandingkan nama pengguna dan kata sandi yang kita masukkan dengan catatan yang ada di databasenya. Jika informasi yang kita kirimkan cocok, sistem menganggap kita adalah pengguna yang valid dan memberi kita akses. Authentication bertujuan untuk memverifikasi bahwa seseorang atau sesuatu adalah siapa atau apa yang mereka klaim.
+
+Authorization adalah proses keamanan yang menentukan tingkat akses pengguna atau layanan. Authorization digunakan untuk memverifikasi apakah user memiliki hak untuk melakukan tindakan tertentu atau mengakses sesuatu, misalnya mengakses halaman web atau data.
+
+
+## 4. Bagaimana Django mengingat pengguna yang telah login? Jelaskan kegunaan lain dari cookies dan apakah semua cookies aman digunakan? 
+
+Djanggo mengingat user yang telah login, dengan session yang dikelola dengan cookies. Lalu untuk memprosesnya dilakukan auntentifikasi. Kegunaan lain dari cookies selain bisa mengingat user yang telah login, yaitu menyimpan preferensi dari user, cookies juga digunakan oleh banyak situs untuk melacak aktivitas user selama mereka menggunakan aplikasi web atau situs web. Pada situs e-commerce, cookies bisa menyimpan informasi tentang barang-barang yang ada di keranjang belanja user. Namun, tidak semua cookies aman digunakan. Jika cookies digunakan untuk menyimpan data yang sangat sensitif, seperti kata sandi, informasi kartu kredit, atau informasi pribadi tanpa enkripsi, maka data ini dapat diekspos ke pihak ketiga. Walaupun data tersebut ada dalam cookies, penyerang dapat mengaksesnya jika cookies bocor, atau jika ada celah keamanan dalam situs. Bisa juga terkena serangan CSRF, penyerang dapat mengirim permintaan palsu atas nama pengguna dengan cookies yang sah, sehingga server mengira bahwa permintaan berasal dari pengguna yang telah terotentikasi.
+
+Cookies yang tidak diatur dengan baik dapat menimbulkan berbagai jenis risiko keamanan, seperti pencurian data, pembajakan sesi, atau pelanggaran privasi pengguna.
+
+## 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+- Mengimplementasikan fungsi registrasi, login, dan logout untuk memungkinkan pengguna untuk mengakses aplikasi sebelumnya dengan lancar.
+fungsi register
+- Buatlah file HTML baru dengan nama login.html pada folder main/templates untuk menampilkan tampilan login kepada user, dan membuat fungsi baru. 
+- Membuat  akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal. Lalu menghubungkan model Item dengan User.
+
+
+
 
 
 
