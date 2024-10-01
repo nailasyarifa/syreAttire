@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from .models import ItemEntry 
 from .forms import ItemEntryForm
 from django.http import HttpResponse
@@ -21,8 +21,7 @@ def show_main(request):
     context = {
         'name': request.user.username,  #tugas 4
         'items': items,  # Daftar semua item pakaian
-        'last_login': request.COOKIES['last_login'],
-        
+        'last_login': request.COOKIES['last_login'], # Tambahkan last_login ke context
     }
     return render(request, 'main.html', context)
 
@@ -89,3 +88,22 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse('main:login'))
     response.delete_cookie('last_login')
     return response
+
+def edit_item(request):
+    category = ItemEntry.objects.get(pk = id)
+    form = ItemEntryForm(request.POST or None, instance=category)
+    if form.is_valid() and request.method == "POST":
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+    
+    context = {'form' : form}
+    return render(request, "edit_item.html", context)
+
+def delete_item(request, id):
+    # Get item berdasarkan id
+    category = ItemEntry.objects.get(pk = id)
+    # Hapus item
+    category.delete()
+    # Kembali ke halaman awal
+    return HttpResponseRedirect(reverse('main:show_main'))
+    
