@@ -100,6 +100,98 @@ fungsi register
 - Buatlah file HTML baru dengan nama login.html pada folder main/templates untuk menampilkan tampilan login kepada user, dan membuat fungsi baru. 
 - Membuat  akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal. Lalu menghubungkan model Item dengan User.
 
+# Tugas 5: Desain Web menggunakan HTML, CSS dan Framework CSS
+## 1. Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
+1. Inline Styles:
+Gaya yang ditetapkan langsung pada elemen HTML menggunakan atribut style memiliki prioritas tertinggi.
+Contoh: <div style="color: red;">Hello</div>
+2. ID Selectors:
+Selector yang menggunakan ID (dengan tanda #) memiliki prioritas tinggi.
+Contoh: #header { color: blue; }
+3. Class, Attribute, dan Pseudo-class Selectors:
+Selector ini termasuk class (dengan tanda .), atribut (misalnya [type="text"]), dan pseudo-class (seperti :hover) yang memiliki prioritas menengah.
+Contoh: .button { color: green; } atau input[type="text"] { background-color: yellow; }
+4. Element (Tag) Selectors:
+Selector ini merujuk pada elemen HTML secara langsung (misalnya, div, p, h1, dll.) dan memiliki prioritas lebih rendah.
+Contoh: p { font-size: 16px; }
+5. Universal Selector:
+Selector universal (tanda *) memiliki prioritas terendah dan akan diterapkan jika tidak ada selector lain yang lebih spesifik.
+Contoh: * { margin: 0; }
+
+Dengan urutan ini dapat terkesan lebih efektif dalam menerapkan dan mengelola gaya di situs web yang telah dibuat. Jika ada dua atau lebih selector yang bisa diterapkan pada elemen yang sama, yang memiliki spesifisitas tertinggi akan diambil.
+
+## 2. Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design!
+Karena Responsive design memungkinkan aplikasi untuk beradaptasi dengan perangkat baru dan ukuran layar yang berbeda tanpa perlu melakukan perubahan besar pada desain.
+Dengan responsive design, pengguna dapat mengakses aplikasi web dari berbagai perangkat—seperti desktop, tablet, dan smartphone—dengan pengalaman yang konsisten dan nyaman. Ini meningkatkan kepuasan pengguna dan kemungkinan mereka untuk kembali ke aplikasi. Dengan semakin banyaknya pengguna yang mengakses internet melalui perangkat mobile, memiliki desain yang responsif memastikan bahwa aplikasi web dapat menjangkau audiens yang lebih luas. Juga, dengan responsive design, pengembang hanya perlu membuat satu versi dari situs web, dibandingkan dengan membuat versi terpisah untuk desktop dan mobile. Ini mengurangi waktu dan biaya pemeliharaan di masa depan.
+
+Contoh aplikasi yang sudah menerapkan responsive design yaitu, e-commerce websites seperti Amazon, Google, dan Twitter. Sedangkan yang belum menerapkan responsive design ini adalah beberapa Situs Kecil atau Lokal seperti personal Blog (WordPress dan Blogger).
+
+## 3. Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
+
+Margin adalah atau area kosong di sisi luar dari elemen html, sedangkan padding mengacu pada ruang di dalam elemen HTML. Contoh implementasi nya dengan:  
+CSS:
+ ```
+.element {
+    margin: 20px; /* Margin atas, kanan, bawah, kiri 20px */
+}
+ ```
+HTML:
+ ```
+     <div class="element">Ini adalah elemen dengan margin.</div> 
+ ```
+
+Border adalah garis yang mengelilingi elemen. Border terletak di antara margin dan padding. Border dapat memiliki warna, ketebalan, dan jenis garis (seperti solid, dashed, atau dotted). Contoh implementasinya :
+CSS: 
+ ```
+.element {
+    border: 2px solid black; /* Border dengan ketebalan 2px, jenis solid, warna hitam */
+}
+ ```
+HTML: 
+```
+    <div class="element">Ini adalah elemen dengan border.</div>
+ ```
+
+Padding adalah ruang di dalam batas elemen, antara konten dan border. Padding meningkatkan ukuran area yang dapat digunakan oleh konten elemen. Padding dapat diatur untuk setiap sisi secara terpisah. Contoh implementasinya :
+CSS:
+ ```
+.element {
+    padding: 10px; /* Padding atas, kanan, bawah, kiri 10px */
+}
+ ```
+HTML:
+ ```
+<div class="element">Ini adalah elemen dengan padding.</div>
+```
+
+Sehingga menjadi 
+```
+.element {
+    margin: 20px; /* Jarak luar elemen */
+    border: 2px solid black; /* Garis border di sekitar elemen */
+    padding: 10px; /* Jarak antara konten dan border */
+}
+
+<div class="element">Ini adalah elemen dengan margin, border, dan padding.</div>
+
+```
+## 4. Jelaskan konsep flex box dan grid layout beserta kegunaannya!
+Flexbox (Flexible Box Layout) adalah model layout CSS yang dirancang untuk mengatur item dalam satu dimensi, baik secara horizontal maupun vertikal. Flexbox memudahkan distribusi ruang dan penataan elemen dalam wadah (container). Flexbox berfungsi dalam satu dimensi, jadi bisa mengatur elemen dalam baris (horizontal) atau kolom (vertikal) tetapi bukan keduanya sekaligus. Cocok untuk layout sederhana, navigasi, dan penataan elemen dalam satu baris atau kolom.
+
+Grid Layout adalah model layout dua dimensi yang memungkinkan pengembang untuk membuat layout kompleks dengan baris dan kolom. Grid memberikan kontrol yang lebih besar terhadap posisi elemen dibandingkan Flexbox. Kegunaannya, membuat layout halaman kompleks dengan header, sidebar, dan konten utama.
+
+## 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step!
+-  Kustomisasi desain pada templat HTML yang telah dibuat pada Tugas 4 dengan menggunakan CSS atau CSS framework (seperti Bootstrap, Tailwind, Bulma) 
+- Melakukan import CDN tailwind pada base.html agar dapat menggunakan tailwind.
+- Kustomisasi halaman login, register, dan tambah inventori semenarik mungkin.
+- Kustomisasi halaman home  menggunakan apporach lain seperti menggunakan Card.
+
+
+
+
+
+
+
 
 
 
