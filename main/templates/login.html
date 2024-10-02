@@ -19,12 +19,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #ffffff; /* Warna latar belakang */
+    background-color: #ffffff; /* Default background color */
   }
 
   /* Card section */
   .login-card {
-    border: 2px solid #000000; /* Border hitam */
+    border: 2px solid #000000; /* Black border */
+    background-color: white; /* Default background color */
   }
 
   /* Right side (image) */
@@ -35,18 +36,34 @@
     background-position: center;
   }
 
-  /* Tombol */
+  /* Button */
   .custom-button {
-    background-color: #000000; /* Warna tombol hitam */
-    color: #ffffff; /* Warna teks putih */
-    /* border: 2px solid #000000; Border hitam */
+    background-color: #000000; /* Black button */
+    color: #ffffff; /* White text */
   }
 
   .custom-button:hover {
-    background-color: #908f8c; /* Mengubah latar belakang menjadi beige saat hover */
-    color: #000000; /* Ubah warna teks menjadi hitam saat hover */
+    background-color: #908f8c; /* Beige background on hover */
+    color: #000000; /* Black text on hover */
   }
 
+  /* Mobile responsive styles */
+  @media (max-width: 768px) {
+    .split-screen {
+      display: none; /* Hide the split screen layout on mobile */
+    }
+    .mobile-card {
+      display: flex; /* Show card on mobile */
+      align-items: center;
+      justify-content: center;
+      height: 100vh; /* Full height for mobile */
+    }
+    .login-card {
+      background-image: none; /* Remove background image on mobile */
+      border: 2px solid #000000; /* Retain border */
+      color: black; /* Default text color */
+    }
+  }
 </style>
 
 <!-- Split Screen Div -->
@@ -103,7 +120,6 @@
       <div class="text-center mt-4">
         <p class="text-sm text-black">
           Don't have an account? <a href="{% url 'main:register' %}" class="font-medium text-red-600 hover:text--500">Register</a>
-          
         </p>
       </div>
     </div>
@@ -111,5 +127,62 @@
 
   <!-- Right Side: Image -->
   <div class="image-section"></div>
+</div>
+
+<!-- Mobile Card Section -->
+<div class="mobile-card">
+  <div class="max-w-md w-full space-y-8 login-card bg-white bg-opacity-80 rounded-lg p-8">
+    <div>
+      <h2 class="mt-6 text-center text-black text-3xl font-extrabold text-gray-900">
+        Login to your account
+      </h2>
+    </div>
+    <form class="mt-8 space-y-6" method="POST" action="">
+      {% csrf_token %}
+      <input type="hidden" name="remember" value="true">
+      <div class="rounded-md shadow-sm -space-y-px">
+        <div>
+          <label for="username" class="sr-only">Username</label>
+          <input id="username" name="username" type="text" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-red-500 focus:border-red-500 focus:z-10 sm:text-sm mb-4" placeholder="Username"> <!-- Rounded inputs -->
+        </div>
+        <div>
+          <label for="password" class="sr-only">Password</label>
+          <input id="password" name="password" type="password" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-red-500 focus:border-red-500 focus:z-10 sm:text-sm" placeholder="Password"> <!-- Rounded inputs -->
+        </div>
+      </div>
+
+      <div>
+        <button type="submit" class="group custom-button relative w-full flex justify-center py-2 px-4 text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+          Log in
+        </button>
+      </div>
+    </form>
+
+    {% if messages %}
+    <div class="mt-4">
+      {% for message in messages %}
+      {% if message.tags == "success" %}
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+          <span class="block sm:inline">{{ message }}</span>
+        </div>
+      {% elif message.tags == "error" %}
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+          <span class="block sm:inline">{{ message }}</span>
+        </div>
+      {% else %}
+        <div class="bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded relative" role="alert">
+          <span class="block sm:inline">{{ message }}</span>
+        </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="text-center mt-4">
+      <p class="text-sm text-black">
+        Don't have an account? <a href="{% url 'main:register' %}" class="font-medium text-red-600 hover:text--500">Register</a>
+      </p>
+    </div>
+  </div>
 </div>
 {% endblock content %}
