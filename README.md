@@ -186,6 +186,41 @@ Grid Layout adalah model layout dua dimensi yang memungkinkan pengembang untuk m
 - Kustomisasi halaman login, register, dan tambah inventori semenarik mungkin.
 - Kustomisasi halaman home  menggunakan apporach lain seperti menggunakan Card.
 
+# Tugas 6 : JavaScript dan AJAX
+## 1. Jelaskan manfaat dari penggunaan JavaScript dalam pengembangan aplikasi web!
+JavaScript dalam pengembangan sebuah aplikasi web berguna untuk memanipulasi halaman web secara dinamis dan interaksi antara halaman web dengan pengguna dapat meningkat.  Menggunakan JavaScript akan menampilkan informasi berdasarkan waktu, mengenali jenis peramban pengguna, melakukan validasi form atau data, membuat HTTP cookies, mengganti styling dan CSS suatu element secara dinamis, dan lain sebagainya. Jadi, JavaScript mempermudah user 
+
+## 2. Jelaskan fungsi dari penggunaan await ketika kita menggunakan fetch()! Apa yang akan terjadi jika kita tidak menggunakan await?
+Fungsi await dalam penggunaan fetch() adalah untuk menghentikan sementara eksekusi kode sampai promise yang dihasilkan oleh fetch() diselesaikan. fetch() mengembalikan sebuah promise yang berisi respons dari permintaan HTTP. Dengan menggunakan await, kita memastikan bahwa kode berikutnya tidak dieksekusi sampai hasil dari fetch() siap, sehingga kita bisa bekerja dengan hasil yang di-resolve langsung, seperti data JSON dari respons. Misal kan pada 
+```
+async function refreshMoodEntries() {
+  document.getElementById("mood_entry_cards").innerHTML = "";
+  document.getElementById("mood_entry_cards").className = "";
+  const moodEntries = await getMoodEntries();
+}
+```
+Fungsi await di sini digunakan untuk menunggu hingga promise yang dihasilkan oleh fungsi getMoodEntries() selesai, sehingga kita bisa mendapatkan hasil dari fungsi tersebut sebelum melanjutkan eksekusi kode selanjutnya. Jika await tidak digunakan, berikut adalah beberapa kemungkinan yang bisa terjadi adalah fungsi getMoodEntries() akan langsung mengembalikan sebuah promise, bukan hasil dari operasinya. Jadi, variabel moodEntries akan berisi promise yang belum diselesaikan.
+
+## 3. Mengapa kita perlu menggunakan decorator csrf_exempt pada view yang akan digunakan untuk AJAX POST? 
+Karena Django memiliki perlindungan terhadap serangan CSRF, yang mencegah permintaan POST, PUT, atau DELETE dilakukan tanpa verifikasi token CSRF. CSRF adalah serangan di mana peretas mencoba membuat pengguna yang sedang login di sebuah situs untuk mengirimkan permintaan berbahaya tanpa sepengetahuannya. Kegunaan dari csrf_exempt sendiri adalah menonaktifkan pengecekan CSRF pada view tertentu, terutama jika tidak ingin menyertakan token CSRF dalam permintaan AJAX POST. Namun, menggunakan token CSRF dalam permintaan AJAX adalah pendekatan yang lebih aman dan disarankan jika ingin menjaga keamanan aplikasi dari serangan CSRF.
+
+## 4.  Pada tutorial PBP minggu ini, pembersihan data input pengguna dilakukan di belakang (backend) juga. Mengapa hal tersebut tidak dilakukan di frontend saja?
+Backend merupakan lapisan terakhir yang bertanggung jawab mengelola logika bisnis, data, dan interaksi dengan database. Karena itu, backend harus memastikan semua input yang masuk telah valid dan bersih sebelum digunakan atau disimpan. Pembersihan di backend menjadi sangat penting untuk memastikan bahwa data yang disajikan melalui API atau dalam format non-HTML (seperti JSON atau XML) sudah bersih dan aman, tanpa mengandalkan frontend. Semua data yang disimpan dan dibagikan, baik melalui web page atau API, harus melalui pembersihan di server.
+
+## 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+- Mengubah card yang ada di main.html.
+- Menambahkan beberapa import dan url pattern.
+- Mnambahkan script agar dapat menghasilkan data product. getProducts berfungsi untuk mendapatkan data product yang ada dan refreshProducts berfungsi untuk menampilkan data kedalam bentuk html agar dapat ditampilkan oleh browser.
+- Menambahkan beberapa import dan url pattern.
+- Membuat fungsi di untuk add product dengan ajax di views.py dan import csrf_exempt pada views.py.
+- Membuat script untuk menambahkan data dengan ajax.
+- Membuat form pop up untuk tempat mengisi data product yang ingin di tambahkan.
+- Menambahkan strip_tags yang akan "membersihkan" semua data baru
+
+
+
+
+
 
 
 
